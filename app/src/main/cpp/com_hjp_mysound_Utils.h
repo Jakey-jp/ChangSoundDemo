@@ -27,6 +27,9 @@ extern "C" {
 JNIEXPORT void JNICALL Java_com_hjp_mysound_Utils_fix
   (JNIEnv *, jclass, jstring, jint);
 
+JNIEXPORT void JNICALL Java_com_hjp_mysound_Utils_pause
+        (JNIEnv *, jclass);
+
 #ifdef __cplusplus
 }
 #endif

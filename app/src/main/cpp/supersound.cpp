@@ -19,6 +19,9 @@
 //使用fmod的命名空间
 using namespace FMOD;
 
+Channel *channel;
+bool paused = false;
+
 //Java native方法的实现
 JNIEXPORT void JNICALL Java_com_hjp_mysound_Utils_fix(JNIEnv *env,
                                                       jclass type_, jstring path_, jint type) {
@@ -29,7 +32,7 @@ JNIEXPORT void JNICALL Java_com_hjp_mysound_Utils_fix(JNIEnv *env,
     Sound *sound;
     DSP *dsp;
     bool playing = true;
-    Channel *channel;
+
     float frequency = 0;
 
     //fmod初始化
@@ -119,6 +122,8 @@ JNIEXPORT void JNICALL Java_com_hjp_mysound_Utils_fix(JNIEnv *env,
     while (playing) {
         channel->isPlaying(&playing);
         usleep(1 * 1000 * 1000);//单位是微妙，这里是1秒延时
+//        channel->setPaused(!paused);
+//        channel->getPaused(&paused);
     }
 
     goto end;
@@ -129,4 +134,12 @@ JNIEXPORT void JNICALL Java_com_hjp_mysound_Utils_fix(JNIEnv *env,
     sound->release();
     system->close();
     system->release();
+}
+
+JNIEXPORT void JNICALL Java_com_hjp_mysound_Utils_pause(JNIEnv *env, jclass type_)  {
+    LOGE("%s", "pause");
+//    isPlaying= false;
+    channel->setPaused(!paused);
+    channel->getPaused(&paused);
+//    channel->stop();
 }

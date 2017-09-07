@@ -1,7 +1,7 @@
 package com.hjp.mysound;
 /**
- * Created by 張鵬輝 on 2017/2/1.
- * Email: 1344670918@qq.com
+ * Created by jakey on 2017/3/5.
+ * QQ 784990536
  */
 public class Utils {
 	//音效类型
@@ -17,9 +17,12 @@ public class Utils {
 	 * @param type 音频文件类型
 	 */
 		public native static void fix(String path,int type);
+	    public native static void pause();
 		static{
 				System.loadLibrary("fmodL");
 				System.loadLibrary("fmod");
 				System.loadLibrary("sound");
 		}
+
+
 }

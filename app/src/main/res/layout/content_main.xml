@@ -132,6 +132,13 @@
 
     </LinearLayout>
 
+    <Button
+        android:onClick="pause"
+        android:id="@+id/pause"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="pause/continue"/>
+
 </LinearLayout>
 
 
